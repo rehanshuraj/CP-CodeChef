@@ -2,27 +2,31 @@
 using namespace std;
 
 int main() {
-	// your code goes here
-	int t;
-	cin>>t;
-	while(t--){
-	    int n,x,s;
-	    cin>>n>>x>>s;
-	    vector<int> arr(n,0);
-	    arr[x-1]=1;
-	    for(int i=1; i<=s; i++){
-	        int a,b;
-	        cin>>a>>b;
-	        swap(arr[a-1],arr[b-1]);
-	    }
-	    int index=-1;
-	    for(int i=0; i<n; i++){
-	       if(arr[i]==1){
-	           index=i;
-	           break;
-	       }
-	    }
-	    cout<<index+1<<endl;
-	}
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector<int> arr(n);
+        unordered_map<int,int> freq;  // to store frequency
 
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i];
+            freq[arr[i]]++;
+        }
+
+        bool ans = true;
+        for (auto &p : freq) {
+            int number = p.first;
+            int count = p.second;
+            if (count != number && (count%number !=0)) {
+                ans = false;
+                break;
+            }
+        }
+
+        if (ans) cout << "yes\n";
+        else cout << "no\n";
+    }
+    return 0;
 }
