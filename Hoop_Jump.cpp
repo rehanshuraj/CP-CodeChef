@@ -6,9 +6,8 @@ int main() {
     int t;
     cin>>t;
     while(t--){
-        int x,y;
-        cin>>x>>y;
-        if(x>y) cout<<x<<endl;
-        else cout<<y<<endl;
+        int n;
+        cin>>n;
+        cout<<(n+1)/2<<endl;
     }
 }
